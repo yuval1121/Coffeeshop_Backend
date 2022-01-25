@@ -3,12 +3,12 @@ import morgan from 'morgan';
 
 const app: Application = express();
 
+//middleware
 app.use(express.json());
 app.use(morgan('dev'));
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello');
-});
+//routers
 
+//server setup
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

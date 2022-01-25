@@ -5,9 +5,9 @@
   "main": "dist/server.js",
   "scripts": {
     "build": "npx tsc",
-    "dev": "ts-node-dev src/server.ts",
     "prestart": "npm run build",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "dev": "ts-node-dev src/server.ts"
   },
   "author": "Yuval",
   "license": "ISC",
