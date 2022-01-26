@@ -1,4 +1,5 @@
 import swaggerJsdoc from 'swagger-jsdoc';
+import yaml from 'js-yaml';
 import { promises } from 'fs';
 
 const options: swaggerJsdoc.Options = {
@@ -11,10 +12,12 @@ const options: swaggerJsdoc.Options = {
   },
   apis: ['./src/routes/*.ts', '.src/schema/*.ts'],
 };
+
 const swaggerSpec = swaggerJsdoc(options);
+const yamlFile = yaml.dump(swaggerSpec);
 
 promises
-  .writeFile('swagger.json', JSON.stringify(swaggerSpec, null, 4))
+  .writeFile('swagger.yml', yamlFile)
   .then(() => console.log('Docs generated Successfully'))
   .catch(err =>
     console.error(`Error occured when generating swagger docs`, err)
