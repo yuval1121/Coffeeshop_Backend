@@ -10,8 +10,8 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 //routers
-app.use(userRouter);
 app.use(swaggerRouter);
+app.use(userRouter);
 
 //server setup
 const PORT = process.env.PORT || 5000;
