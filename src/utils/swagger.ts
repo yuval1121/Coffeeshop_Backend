@@ -20,7 +20,7 @@ promises
   .writeFile('swagger.yaml', yamlFile)
   .then(() => console.log('Docs generated Successfully'))
   .catch(err =>
-    console.error(`Error occured when generating swagger docs`, err)
+    console.error('Error occured when generating swagger docs', err)
   );
 
 export { swaggerSpec };

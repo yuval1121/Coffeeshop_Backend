@@ -1,4 +1,5 @@
 import express, { Express } from 'express';
+import 'express-async-errors';
 import morgan from 'morgan';
 import { userRouter } from './routes/user.router';
 import { swaggerRouter } from './routes/swagger.route';

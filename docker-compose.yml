@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  coffeeshop:
+    container_name: coffeeshop
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    build:
+      context: ./
+    ports:
+      - "5000:5000"
