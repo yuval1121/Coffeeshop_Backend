@@ -1,4 +1,4 @@
-FROM node:16
+FROM mhart/alpine-node:16
 
 ADD package.json /tmp/package.json
 
