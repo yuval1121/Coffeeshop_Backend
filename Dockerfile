@@ -1,11 +1,12 @@
-FROM mhart/alpine-node:16
+FROM node:lts-alpine
 
 WORKDIR /server
 
 COPY package.json ./
-
-RUN npm install
+COPY package-lock.json ./
+RUN npm ci
 
 COPY . .
+RUN npx tsc
 
-CMD [ "npm","start" ]
+CMD ["node","dist/server.js"]
