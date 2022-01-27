@@ -1,14 +1,11 @@
 FROM mhart/alpine-node:16
 
-ADD package.json /tmp/package.json
+WORKDIR /server
 
-RUN rm -rf dist
-RUN  cd /tmp && npm install
+COPY package.json ./
 
-ADD ./ /src
+RUN npm install
 
-RUN  rm -rf src/node_modules && cp -a /tmp/node_modules /src/
+COPY . .
 
-WORKDIR /src
-
-CMD ["npm","start"]
+CMD [ "npm","start" ]
