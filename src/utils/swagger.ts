@@ -1,6 +1,7 @@
 import swaggerJsdoc from 'swagger-jsdoc';
 import yaml from 'js-yaml';
 import { promises } from 'fs';
+import { logger } from './logger';
 
 const options: swaggerJsdoc.Options = {
   definition: {
@@ -18,9 +19,9 @@ const yamlFile = yaml.dump(swaggerSpec);
 
 promises
   .writeFile('swagger.yaml', yamlFile)
-  .then(() => console.log('Docs generated Successfully'))
+  .then(() => logger.info('Docs generated Successfully'))
   .catch(err =>
-    console.error('Error occured when generating swagger docs', err)
+    logger.error('Error occured when generating swagger docs', err)
   );
 
 export { swaggerSpec };

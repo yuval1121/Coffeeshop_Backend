@@ -1,6 +1,7 @@
 import express, { Express } from 'express';
 import 'express-async-errors';
 import morgan from 'morgan';
+import { logger } from './utils/logger';
 import { userRouter } from './routes/user.router';
 import { swaggerRouter } from './routes/swagger.route';
 import { connectDB } from '../config/db';
@@ -18,7 +19,7 @@ app.use(userRouter);
 //server setup
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, async () => {
-  console.log(`Server started at http://localhost:${PORT}`);
+  logger.info(`Server started at http://localhost:${PORT}`);
 
   //connect to mongo
   await connectDB();
