@@ -8,5 +8,4 @@ RUN npm ci
 
 COPY . .
 RUN npx tsc
-
-CMD ["node","dist/server.js"]
+CMD ["node","dist/src/server.js"]

@@ -1,6 +1,8 @@
-version: '3.7'
+version: '3.8'
 services:
   coffeeshop:
+    depends_on:
+      - mongo
     container_name: coffeeshop
     restart: unless-stopped
     environment:
@@ -8,4 +10,9 @@ services:
     build:
       context: ./
     ports:
-      - "5000:5000"
+      - 5000:5000
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    command: --quiet
