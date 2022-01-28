@@ -18,8 +18,8 @@ app.use(userRouter);
 //server setup
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, async () => {
-  console.log(`Server started on port ${PORT}`);
+  console.log(`Server started at http://localhost:${PORT}`);
 
-  // connect to mongo
+  //connect to mongo
   await connectDB();
 });
