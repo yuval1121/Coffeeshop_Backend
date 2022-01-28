@@ -16,5 +16,12 @@
         "@typescript-eslint"
     ],
     "ignorePatterns": "dist/**/*.js",
-    "rules": {}
+    "rules": {
+        "@typescript-eslint/typedef": [
+            "error",
+            {
+                "variableDeclaration": true
+            }
+        ]
+    }
 }

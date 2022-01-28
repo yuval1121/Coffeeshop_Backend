@@ -1,4 +1,4 @@
-import pino, { LoggerOptions } from 'pino';
+import pino, { Logger, LoggerOptions } from 'pino';
 
 const options: LoggerOptions = {
   transport: {
@@ -13,6 +13,6 @@ const options: LoggerOptions = {
   timestamp: false,
 };
 
-const logger = pino(options);
+const logger: Logger<LoggerOptions> = pino(options);
 
 export { logger };

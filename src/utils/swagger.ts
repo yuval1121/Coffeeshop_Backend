@@ -14,8 +14,8 @@ const options: swaggerJsdoc.Options = {
   apis: ['./src/routes/*.ts', '.src/schema/*.ts'],
 };
 
-const swaggerSpec = swaggerJsdoc(options);
-const yamlFile = yaml.dump(swaggerSpec);
+const swaggerSpec: object = swaggerJsdoc(options);
+const yamlFile: string = yaml.dump(swaggerSpec);
 
 promises
   .writeFile('swagger.yaml', yamlFile)

@@ -17,7 +17,7 @@ app.use(swaggerRouter);
 app.use(userRouter);
 
 //server setup
-const PORT = process.env.PORT || 5000;
+const PORT: string | 5000 = process.env.PORT || 5000;
 app.listen(PORT, async () => {
   logger.info(`Server started at http://localhost:${PORT}`);
 

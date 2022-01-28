@@ -3,12 +3,12 @@ import config from 'config';
 import { logger } from '../src/utils/logger';
 
 const connectDB = async () => {
-  const dbUri: string = config.get<string>('mongoURI');
+  const dbURI: string = config.get<string>('mongoURI');
   try {
-    await mongoose.connect(dbUri);
+    await mongoose.connect(dbURI);
     logger.info('MongoDB Connected...');
   } catch (error) {
-    logger.error(error);
+    logger.error('Error occured when connecting to mongo', error);
     process.exit(1);
   }
 };
