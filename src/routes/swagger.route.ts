@@ -8,4 +8,4 @@ const swaggerRouter: Router = Router();
 swaggerRouter.use('/docs', swaggerUi.serve);
 swaggerRouter.get('/docs', swaggerUi.setup(swaggerSpec));
 
-export { swaggerRouter };
+export default swaggerRouter;

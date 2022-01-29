@@ -13,8 +13,8 @@ const userRouter: Router = Router();
  *
  */
 
-userRouter.get('/', async (req, res) => {
+userRouter.get('/', async (req: Request, res: Response) => {
   res.send('hello from user');
 });
 
-export { userRouter };
+export default userRouter;

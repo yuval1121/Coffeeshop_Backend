@@ -20,7 +20,7 @@ const yamlFile: string = yaml.dump(swaggerSpec);
 promises
   .writeFile('swagger.yaml', yamlFile)
   .then(() => logger.info('Docs generated Successfully'))
-  .catch(err =>
+  .catch((err: unknown) =>
     logger.error('Error occured when generating swagger docs', err)
   );
 

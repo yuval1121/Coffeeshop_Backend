@@ -1,10 +1,9 @@
 import express, { Express } from 'express';
 import 'express-async-errors';
 import morgan from 'morgan';
-import { logger } from './utils/logger';
-import { userRouter } from './routes/user.router';
-import { swaggerRouter } from './routes/swagger.route';
 import { connectDB } from '../config/db';
+import { logger } from './utils/logger';
+import { userRouter, swaggerRouter } from './routes';
 
 const app: Express = express();
 

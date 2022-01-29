@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import config from 'config';
 import { logger } from '../src/utils/logger';
 
-const connectDB = async () => {
+const connectDB: () => Promise<void> = async () => {
   const dbURI: string = config.get<string>('mongoURI');
   try {
     await mongoose.connect(dbURI);
