@@ -8,7 +8,7 @@ const connectDB: () => Promise<void> = async () => {
     await mongoose.connect(dbURI);
     logger.info('MongoDB Connected...');
   } catch (error) {
-    logger.error('Error occured when connecting to mongo', error);
+    logger.error('Error occured when connecting to mongo');
     process.exit(1);
   }
 };

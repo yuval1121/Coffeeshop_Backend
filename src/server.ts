@@ -3,7 +3,7 @@ import 'express-async-errors';
 import morgan from 'morgan';
 import { connectDB } from '../config/db';
 import { logger } from './utils/logger';
-import { userRouter, swaggerRouter } from './routes';
+import { userRouter } from './routes';
 
 const app: Express = express();
 
@@ -13,13 +13,11 @@ app.use(morgan('dev'));
 
 //routers
 app.use('/api/users', userRouter);
-app.use('/docs', swaggerRouter);
 
 //server setup
 const PORT: string | number = process.env.PORT || 5000;
 app.listen(PORT, async () => {
   logger.info(`Server started at http://localhost:${PORT}`);
-  logger.info(`Swagger webpage available at http://localhost:${PORT}/docs`);
   //connect to mongo
   await connectDB();
 });

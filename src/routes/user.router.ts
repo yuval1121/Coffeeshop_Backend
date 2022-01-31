@@ -29,12 +29,12 @@ usersRouter.post(
     const { name, email, password, role, orders }: User = req.body;
 
     try {
-      const checkIfAlreadyUser: HydratedDocument<User> | null =
+      // check if user already exists, email must be unique
+      if (
         await userModel.findOne({
           email,
-        });
-
-      if (checkIfAlreadyUser) {
+        })
+      ) {
         return res.status(400).json({ msg: 'User already exists' });
       }
 
