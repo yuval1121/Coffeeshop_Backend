@@ -1,16 +1,24 @@
-import { Schema, model, Types, Model } from 'mongoose';
+import { Schema, model, Types, Model, HydratedDocument } from 'mongoose';
+import bcrypt from 'bcryptjs';
 import User from '../types/user.type';
 
-const userSchema: Schema = new Schema<User>(
-  {
-    email: { type: String, required: true, unique: true },
-    name: { type: String, required: true },
-    password: { type: String, required: true, minlength: 6 },
-    role: { type: Types.ObjectId, ref: 'Role' },
-    orders: { type: [Types.ObjectId], ref: 'Order' },
-  },
-  { timestamps: true }
-);
+const userSchema: Schema = new Schema<User>({
+  email: { type: String, required: true, unique: true },
+  name: { type: String, required: true },
+  password: { type: String, required: true, minlength: 6 },
+  role: { type: String, default: 'client' },
+  orders: { type: [Types.ObjectId], ref: 'Order' },
+});
+
+userSchema.pre('save', async function (this: HydratedDocument<User>, next) {
+  if (!this.isModified('password')) return next();
+
+  const salt: string = await bcrypt.genSalt(10);
+  const hashedPassword: string = await bcrypt.hash(this.password, salt);
+  this.password = hashedPassword;
+
+  return next();
+});
 
 const userModel: Model<User> = model<User>('User', userSchema);
 

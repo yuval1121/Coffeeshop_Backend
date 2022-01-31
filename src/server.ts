@@ -12,8 +12,8 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 //routers
-app.use(swaggerRouter);
-app.use(userRouter);
+app.use('/api/users', userRouter);
+app.use('/docs', swaggerRouter);
 
 //server setup
 const PORT: string | number = process.env.PORT || 5000;

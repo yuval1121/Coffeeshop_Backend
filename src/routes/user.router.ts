@@ -1,20 +1,72 @@
-import { Router, Request, Response } from 'express';
+import User from '../types/user.type';
+import userModel from '../models/user.model';
+import jwt from 'jsonwebtoken';
+import config from 'config';
+import { Request, Response, Router } from 'express';
+import { body, Result, validationResult } from 'express-validator';
+import { createUser } from '../service/user.sevice';
+import { HydratedDocument } from 'mongoose';
 
-const userRouter: Router = Router();
+const usersRouter: Router = Router();
 
-/**
- * @swagger
- * /:
- *   get:
- *     description: Get all Employee by Email
- *     responses:
- *       200:
- *         description: Success
- *
- */
+// @route   POST api/users
+// @desc    Register a user
+// @access  Public
+usersRouter.post(
+  '/',
+  body('name', 'Please add name').notEmpty(),
+  body('email', 'Please include a valid email').isEmail(),
+  body(
+    'password',
+    'Please enter a password with 6 or more characters'
+  ).isLength({ min: 6 }),
+  async (req: Request, res: Response) => {
+    const errors: Result = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
 
-userRouter.post('/', async (req: Request, res: Response) => {
-  res.send('hello from user');
-});
+    const { name, email, password, role, orders }: User = req.body;
 
-export default userRouter;
+    try {
+      const checkIfAlreadyUser: HydratedDocument<User> | null =
+        await userModel.findOne({
+          email,
+        });
+
+      if (checkIfAlreadyUser) {
+        return res.status(400).json({ msg: 'User already exists' });
+      }
+
+      const createdUser: HydratedDocument<User> = await createUser({
+        name,
+        email,
+        password,
+        role,
+        orders,
+      });
+
+      const payload: object = {
+        user: {
+          id: createdUser.id,
+          role: createdUser.role,
+        },
+      };
+
+      jwt.sign(
+        payload,
+        config.get('jwt'),
+        {},
+        (err: any, token: string | undefined) => {
+          if (err) throw new Error();
+          res.json({ token });
+        }
+      );
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
+export default usersRouter;
