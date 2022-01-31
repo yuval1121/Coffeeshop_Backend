@@ -18,11 +18,12 @@
     "ignorePatterns": "dist/**/*.js",
     "rules": {
         "@typescript-eslint/typedef": [
-            "error",
+            "warn",
             {
                 "arrowParameter": true,
                 "variableDeclaration": true
             }
-        ]
+        ],
+        "@typescript-eslint/no-explicit-any": "off"
     }
 }

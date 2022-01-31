@@ -16,10 +16,10 @@ app.use(swaggerRouter);
 app.use(userRouter);
 
 //server setup
-const PORT: string | 5000 = process.env.PORT || 5000;
+const PORT: string | number = process.env.PORT || 5000;
 app.listen(PORT, async () => {
   logger.info(`Server started at http://localhost:${PORT}`);
-
+  logger.info(`Swagger webpage available at http://localhost:${PORT}/docs`);
   //connect to mongo
   await connectDB();
 });

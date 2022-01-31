@@ -13,7 +13,7 @@ const userRouter: Router = Router();
  *
  */
 
-userRouter.get('/', async (req: Request, res: Response) => {
+userRouter.post('/', async (req: Request, res: Response) => {
   res.send('hello from user');
 });
 
