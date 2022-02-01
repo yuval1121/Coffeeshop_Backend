@@ -40,7 +40,7 @@
 - Client users can make orders.
 - Persistent data with MongoDB.
 - Passwords are hashed and salted.
-- Authentication with JWT tokens.
+- Authentication and authorization with JWT tokens.
 - Docker support.
 
 ## How To Use
