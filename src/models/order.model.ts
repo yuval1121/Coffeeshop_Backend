@@ -18,7 +18,7 @@ const orderSchema: Schema<Order> = new Schema<Order>({
   client: {
     type: Types.ObjectId,
     required: true,
-    ref: 'user',
+    ref: 'User',
   },
   price: {
     type: Number,
@@ -43,6 +43,6 @@ orderSchema.pre<Order>('save', async function (next) {
   next();
 });
 
-const orderModel: Model<Order> = model<Order>('order', orderSchema);
+const orderModel: Model<Order> = model<Order>('Order', orderSchema);
 
 export default orderModel;
