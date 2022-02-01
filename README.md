@@ -18,6 +18,8 @@
 - Creating users of different roles.
 - Creating items by admin users.
 - Client users can make orders.
+- Persistent data with MongoDB.
+- Authentication with jwt tokens.
 - Docker support.
 
 ## How To Use
