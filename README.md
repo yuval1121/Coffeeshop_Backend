@@ -5,7 +5,7 @@
   <br>
 </h1>
 
-<h4 align="center">A simple REST API simulating the backend of a production coffeeshop server built in typescript,express,mongo and docker</a>.</h4>
+<h4 align="center">A simple REST API simulating the server of a production coffeeshop web app built in typescript,express,mongo and docker</a>.</h4>
 
 <p align="center">
   <a href="#key-features">Key Features</a> •
