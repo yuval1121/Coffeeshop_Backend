@@ -16,15 +16,20 @@ const connectDB: () => Promise<void> = async () => {
         email: 'admin@admin.com',
         password: '123456',
         role: 'admin',
-        orders: undefined,
       });
       await createUser({
         name: 'client',
         email: 'client@client.com',
         password: '123456',
         role: 'client',
-        orders: undefined,
       });
+
+      logger.info(
+        'Created admin account -> email:admin@admin.com password:123456'
+      );
+      logger.info(
+        'Created client account -> email:client@client.com password:123456'
+      );
     }
   } catch (error) {
     logger.error('Error occured when connecting to mongo');

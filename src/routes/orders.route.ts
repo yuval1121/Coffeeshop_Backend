@@ -25,8 +25,8 @@ ordersRouter.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    // can use spread instead
     const { items, price }: Order = req.body;
+
     const client: Types.ObjectId = new Types.ObjectId(res.locals.user.id);
     try {
       const order: HydratedDocument<Order> | null = await createOrder({
