@@ -5,5 +5,5 @@ export default interface User {
   name: string;
   password: string;
   role: string;
-  orders: [Types.ObjectId];
+  orders: [Types.ObjectId] | undefined;
 }

@@ -7,6 +7,7 @@ import { body, Result, validationResult } from 'express-validator';
 import { createUser } from '../service/user.sevice';
 import { HydratedDocument } from 'mongoose';
 import { logger } from '../utils/logger';
+import authTokenPayload from '../types/token.type';
 
 const usersRouter: Router = Router();
 
@@ -27,7 +28,7 @@ usersRouter.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password, role, orders }: User = req.body;
+    const { name, email, password, role }: User = req.body;
 
     try {
       // check if user already exists, email must be unique
@@ -44,10 +45,10 @@ usersRouter.post(
         email,
         password,
         role,
-        orders,
+        orders: undefined,
       });
 
-      const payload: object = {
+      const payload: authTokenPayload = {
         user: {
           id: createdUser.id,
           role: createdUser.role,
@@ -63,8 +64,8 @@ usersRouter.post(
           res.json({ token });
         }
       );
-    } catch (err) {
-      logger.error(err);
+    } catch (error) {
+      logger.error(error);
       res.status(500).send('Server Error');
     }
   }
