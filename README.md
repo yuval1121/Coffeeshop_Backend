@@ -34,15 +34,20 @@ $ git clone https://github.com/yuval1121/Coffeeshop_Backend.git
 # Go into the repository
 $ cd Coffeeshop_Backend
 
-# Run docker
+
+# With docker
 $ docker-compose up
 
-# Or without docker
+# without docker
 # Install dependencies
 $ npm install
 
 # Run the app
 $ npm start
+
+# Default users:
+email:admin@admin.com password:123456
+email:client@client.com password:123456
 ```
 
 ## License
