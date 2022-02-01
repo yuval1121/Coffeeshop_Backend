@@ -11,7 +11,7 @@ import userModel from '../models/user.model';
 import User from '../types/user.type';
 import { logger } from '../utils/logger';
 import jwt from 'jsonwebtoken';
-import { validatePassword } from '../service/user.sevice';
+import { validatePassword } from '../service/user.service';
 import authTokenPayload from '../types/token.type';
 import config from 'config';
 

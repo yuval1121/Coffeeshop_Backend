@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import config from 'config';
 import { Request, Response, Router } from 'express';
 import { body, Result, validationResult } from 'express-validator';
-import { createUser } from '../service/user.sevice';
+import { createUser } from '../service/user.service';
 import { HydratedDocument } from 'mongoose';
 import { logger } from '../utils/logger';
 import authTokenPayload from '../types/token.type';
