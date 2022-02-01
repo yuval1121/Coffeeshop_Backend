@@ -1,7 +1,7 @@
 import userModel from '../models/user.model';
 import User from '../types/user.type';
-import { logger } from '../utils/logger';
 import bcrypt from 'bcryptjs';
+import { logger } from '../utils/logger';
 
 export async function createUser(input: User) {
   try {
@@ -15,6 +15,6 @@ export async function createUser(input: User) {
 export async function validatePassword(
   candidatePassword: string,
   hashedPassword: string
-) {
+): Promise<boolean> {
   return bcrypt.compare(candidatePassword, hashedPassword).catch(() => false);
 }

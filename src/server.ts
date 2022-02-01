@@ -3,7 +3,7 @@ import 'express-async-errors';
 import morgan from 'morgan';
 import { connectDB } from '../config/db';
 import { logger } from './utils/logger';
-import { userRouter } from './routes';
+import { userRouter, authRouter } from './routes';
 
 const app: Express = express();
 
@@ -13,6 +13,7 @@ app.use(morgan('dev'));
 
 //routers
 app.use('/api/users', userRouter);
+app.use('/api/auth', authRouter);
 
 //server setup
 const PORT: string | number = process.env.PORT || 5000;

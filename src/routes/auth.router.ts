@@ -6,7 +6,7 @@ import {
   validationResult,
 } from 'express-validator';
 import { HydratedDocument } from 'mongoose';
-import { authUser } from '../middleware/auth';
+import { authUser } from '../middleware/auth.mid';
 import userModel from '../models/user.model';
 import User from '../types/user.type';
 import { logger } from '../utils/logger';
