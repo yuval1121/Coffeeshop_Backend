@@ -42,3 +42,5 @@ ordersRouter.post(
     }
   }
 );
+
+export default ordersRouter;

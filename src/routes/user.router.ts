@@ -45,7 +45,6 @@ usersRouter.post(
         email,
         password,
         role,
-        orders: undefined,
       });
 
       const payload: authTokenPayload = {

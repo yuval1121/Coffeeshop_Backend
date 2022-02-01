@@ -1,9 +1,8 @@
 import express, { Express } from 'express';
-import 'express-async-errors';
 import morgan from 'morgan';
 import { connectDB } from '../config/db';
 import { logger } from './utils/logger';
-import { userRouter, authRouter } from './routes';
+import { userRouter, authRouter, itemsRouter, ordersRouter } from './routes';
 
 const app: Express = express();
 
@@ -14,6 +13,8 @@ app.use(morgan('dev'));
 //routers
 app.use('/api/users', userRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/items', itemsRouter);
+app.use('/api/orders', ordersRouter);
 
 //server setup
 const PORT: string | number = process.env.PORT || 5000;

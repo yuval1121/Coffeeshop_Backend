@@ -1,7 +1,6 @@
 import {
   Schema,
   model,
-  Types,
   Model,
   HydratedDocument,
   CallbackError,
@@ -14,7 +13,6 @@ const userSchema: Schema<User> = new Schema<User>({
   name: { type: String, required: true },
   password: { type: String, required: true, minlength: 6 },
   role: { type: String, default: 'client' },
-  orders: { type: [Types.ObjectId], ref: 'Order' },
 });
 
 userSchema.pre(
