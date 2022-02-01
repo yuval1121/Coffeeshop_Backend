@@ -1,8 +1,7 @@
 import { Types } from 'mongoose';
 
-export interface Order {
+export default interface Order {
   items: [Types.ObjectId];
   client: Types.ObjectId;
   price: number;
-  done: boolean;
 }

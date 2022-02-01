@@ -1,6 +1,6 @@
 import { Schema, Types, model, Model } from 'mongoose';
 import Item from '../types/item.type';
-import { Order } from '../types/order.type';
+import Order from '../types/order.type';
 import User from '../types/user.type';
 import itemModel from './item.model';
 import userModel from './user.model';
@@ -23,14 +23,10 @@ const orderSchema: Schema<Order> = new Schema<Order>({
   price: {
     type: Number,
   },
-  done: {
-    type: Boolean,
-    default: false,
-  },
 });
 
 orderSchema.pre<Order>('save', async function (next) {
-  const client: User | null = await userModel.findById(this.client).select('');
+  const client: User | null = await userModel.findById(this.client);
 
   let price: number = 0;
   for (const item of this.items) {
