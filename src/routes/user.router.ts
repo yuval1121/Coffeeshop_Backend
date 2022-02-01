@@ -6,6 +6,7 @@ import { Request, Response, Router } from 'express';
 import { body, Result, validationResult } from 'express-validator';
 import { createUser } from '../service/user.sevice';
 import { HydratedDocument } from 'mongoose';
+import { logger } from '../utils/logger';
 
 const usersRouter: Router = Router();
 
@@ -56,14 +57,14 @@ usersRouter.post(
       jwt.sign(
         payload,
         config.get('jwt'),
-        {},
+        { expiresIn: '1h' },
         (err: any, token: string | undefined) => {
           if (err) throw new Error();
           res.json({ token });
         }
       );
     } catch (err) {
-      console.error(err);
+      logger.error(err);
       res.status(500).send('Server Error');
     }
   }
