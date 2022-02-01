@@ -29,7 +29,7 @@ userSchema.pre(
     const hashedPassword: string = await bcrypt.hash(this.password, salt);
     this.password = hashedPassword;
 
-    return next();
+    next();
   }
 );
 

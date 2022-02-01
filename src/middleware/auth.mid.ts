@@ -13,7 +13,7 @@ export function authUser(req: Request, res: Response, next: NextFunction) {
   //get bearer token from header
   const token: string | undefined = req.header('Authorization')?.split(' ')[1];
 
-  //check if received token
+  //check if no token received
   if (!token) return res.status(401).send('No token, authorization denied');
 
   try {

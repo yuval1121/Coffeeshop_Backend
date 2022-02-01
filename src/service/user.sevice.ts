@@ -16,5 +16,7 @@ export async function validatePassword(
   candidatePassword: string,
   hashedPassword: string
 ): Promise<boolean> {
-  return bcrypt.compare(candidatePassword, hashedPassword).catch(() => false);
+  return await bcrypt
+    .compare(candidatePassword, hashedPassword)
+    .catch(() => false);
 }

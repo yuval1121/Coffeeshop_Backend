@@ -55,6 +55,7 @@ usersRouter.post(
         },
       };
 
+      //sign and send back jwt token
       jwt.sign(
         payload,
         config.get('jwt'),
