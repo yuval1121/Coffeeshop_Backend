@@ -33,6 +33,8 @@
   <a href="#license">License</a>
 </p>
 
+![screenshot](https://github.com/yuval1121/Coffeeshop_Backend/blob/master/public/screenshot.png?raw=true)
+
 ## Key Features
 
 - Creating users of different roles.
