@@ -3,12 +3,6 @@ import config from 'config';
 import authTokenPayload from '../types/token.type';
 import { NextFunction, Request, Response } from 'express';
 
-declare module 'jsonwebtoken' {
-  export interface JwtPayload {
-    user: { id: string; role: string };
-  }
-}
-
 export function authUser(req: Request, res: Response, next: NextFunction) {
   //get bearer token from header
   const token: string | undefined = req.header('Authorization')?.split(' ')[1];
