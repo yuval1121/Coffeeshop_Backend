@@ -8,7 +8,7 @@ import userModel from './user.model';
 const orderSchema: Schema<Order> = new Schema<Order>({
   items: {
     type: [Types.ObjectId],
-    ref: 'item',
+    ref: 'Item',
     validate: {
       validator: function (arr: [Types.ObjectId]) {
         return arr.length > 0;
