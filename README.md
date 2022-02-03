@@ -24,6 +24,9 @@
          alt="JWT">
     <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white"
          alt="NPM">
+     <img src="https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white"
+         alt="Swagger">
+    
     
 </p>
 
@@ -43,6 +46,7 @@
 - Persistent data with MongoDB.
 - Passwords are hashed and salted.
 - Authentication and authorization with JWT tokens.
+- OpenAPI spec on the server.
 - Docker support.
 
 ## How To Use
