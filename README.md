@@ -60,7 +60,6 @@ $ git clone https://github.com/yuval1121/Coffeeshop_Backend.git
 # Go into the repository
 $ cd Coffeeshop_Backend
 
-
 # With docker
 $ docker-compose up
 
