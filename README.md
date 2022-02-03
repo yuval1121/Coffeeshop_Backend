@@ -70,6 +70,9 @@ $ npm install
 # Run the app
 $ npm start
 
+# Swagger page:
+localhost:5000/docs
+
 # Default users:
 email:admin@admin.com password:123456
 email:client@client.com password:123456
