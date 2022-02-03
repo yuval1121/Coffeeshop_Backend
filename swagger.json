@@ -1,0 +1,88 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "API Title",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/items": {
+      "get": {
+        "tags": ["Items"],
+        "summary": "Gets all items",
+        "responses": {
+          "200": {
+            "description": "Returns all items"
+          }
+        }
+      }
+    },
+    "/api/auth/{ignore}": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Logs in user and returns JWT Token. Actual path is /api/auth/",
+        "responses": {
+          "200": {
+            "description": "JWT Token"
+          }
+        }
+      }
+    },
+    "/api/auth": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get current user, body required valid bearer token",
+        "responses": {
+          "200": {
+            "description": "User object"
+          }
+        }
+      }
+    },
+    "/api/users": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Register a user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string", "example": "greg" },
+                  "email": { "type": "string", "example": "greg@greg.com" },
+                  "password": { "type": "string", "example": "123456" },
+                  "role": { "type": "string", "example": "client" }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "User registered",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BasicAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}
