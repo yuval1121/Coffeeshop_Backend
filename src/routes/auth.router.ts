@@ -36,7 +36,7 @@ authRouter.get(
   }
 );
 
-// @route   POST api/auth
+// @route   POST api/auth/login
 // @desc    Auth user and get token
 // @access  Public
 

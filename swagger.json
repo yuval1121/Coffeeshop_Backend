@@ -87,7 +87,7 @@
         ]
       }
     },
-    "/api/items": {
+    "/api/items/allitems": {
       "get": {
         "tags": ["Items"],
         "summary": "Gets all items",
@@ -161,10 +161,12 @@
   },
   "components": {
     "securitySchemes": {
-      "BasicAuth": {
+      "bearerAuth": {
         "type": "http",
-        "scheme": "bearer"
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
-  }
+  },
+  "security": [{ "bearerAuth": [] }]
 }
