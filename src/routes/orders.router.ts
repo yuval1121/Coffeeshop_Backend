@@ -7,7 +7,7 @@ import {
 } from 'express-validator';
 import { HydratedDocument, Types } from 'mongoose';
 import { authUser } from '../middleware/auth.mid';
-import { createOrder } from '../service/order.service';
+import { createOrder } from '../services/order.service';
 import Order from '../types/order.type';
 import { logger } from '../utils/logger';
 

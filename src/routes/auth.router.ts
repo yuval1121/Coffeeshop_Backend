@@ -11,33 +11,37 @@ import userModel from '../models/user.model';
 import User from '../types/user.type';
 import { logger } from '../utils/logger';
 import jwt from 'jsonwebtoken';
-import { validatePassword } from '../service/user.service';
+import { validatePassword } from '../services/user.service';
 import authTokenPayload from '../types/token.type';
 import config from 'config';
 
 const authRouter: Router = Router();
 
-// @route   GET api/auth
+// @route   GET api/auth/currentuser
 // @desc    Get logged in user
 // @access  Private
-authRouter.get('/', authUser, async (req: Request, res: Response) => {
-  try {
-    const user: HydratedDocument<User> | null = await userModel
-      .findById(res.locals.user.id)
-      .select('-password');
-    res.json(user);
-  } catch (err) {
-    logger.error(err);
-    res.status(500).send('Server Error');
+authRouter.get(
+  '/currentuser',
+  authUser,
+  async (req: Request, res: Response) => {
+    try {
+      const user: HydratedDocument<User> | null = await userModel
+        .findById(res.locals.user.id)
+        .select('-password');
+      res.json(user);
+    } catch (err) {
+      logger.error(err);
+      res.status(500).send('Server Error');
+    }
   }
-});
+);
 
 // @route   POST api/auth
 // @desc    Auth user and get token
 // @access  Public
 
 authRouter.post(
-  '/',
+  '/login',
   body('email', 'Please include a valid email').isEmail(),
   body('password', 'Password is required').exists(),
   async (req: Request, res: Response) => {

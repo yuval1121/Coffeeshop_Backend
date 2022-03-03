@@ -1,10 +1,92 @@
 {
-  "openapi": "3.0.2",
+  "openapi": "3.0.3",
   "info": {
     "title": "Backend REST API",
     "version": "1.0"
   },
   "paths": {
+    "/api/orders/makeorder": {
+      "post": {
+        "tags": ["Orders"],
+        "summary": "Create an order",
+        "responses": {
+          "200": {
+            "description": "Order created"
+          }
+        }
+      }
+    },
+    "/api/items/delete/{id}": {
+      "delete": {
+        "tags": ["Items"],
+        "summary": "Deletes an item, requires admin token",
+        "responses": {
+          "200": {
+            "description": "Item deleted."
+          }
+        },
+        "parameters": [
+          {
+            "name": "ID",
+            "required": true,
+            "description": "ID of item to delete",
+            "schema": { "type": "string" },
+            "in": "path"
+          }
+        ]
+      }
+    },
+    "/api/items/update/{id}": {
+      "put": {
+        "tags": ["Items"],
+        "summary": "Updates an item, requires admin token",
+        "responses": {
+          "200": {
+            "description": "Item updated."
+          }
+        },
+        "parameters": [
+          {
+            "name": "ID",
+            "required": true,
+            "description": "ID of item to update",
+            "schema": { "type": "string" },
+            "in": "path"
+          }
+        ]
+      }
+    },
+    "/api/items/add": {
+      "post": {
+        "tags": ["Items"],
+        "summary": "Adds an item, requires admin token",
+        "responses": {
+          "200": {
+            "description": "Item added."
+          }
+        }
+      }
+    },
+    "/api/items/get/{id}": {
+      "get": {
+        "tags": ["Items"],
+        "summary": "Gets an item",
+        "responses": {
+          "200": {
+            "description": "Returns a specific item"
+          }
+        },
+        "parameters": [
+          {
+            "name": "ID",
+            "required": true,
+            "description": "ID of item to get",
+            "schema": { "type": "string" },
+            "in": "path"
+          }
+        ]
+      }
+    },
     "/api/items": {
       "get": {
         "tags": ["Items"],
@@ -16,10 +98,10 @@
         }
       }
     },
-    "/api/auth/{ignore}": {
+    "/api/auth/login": {
       "post": {
         "tags": ["Users"],
-        "summary": "Logs in user and returns JWT Token. Actual path is /api/auth/",
+        "summary": "Logs in user and returns JWT Token.",
         "responses": {
           "200": {
             "description": "JWT Token"
@@ -27,13 +109,13 @@
         }
       }
     },
-    "/api/auth": {
+    "/api/auth/currentuser": {
       "get": {
         "tags": ["Users"],
-        "summary": "Get current user, body required valid bearer token",
+        "summary": "Gets current user, body requires valid bearer token",
         "responses": {
           "200": {
-            "description": "User object"
+            "description": "User object without password"
           }
         }
       }

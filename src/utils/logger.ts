@@ -13,6 +13,4 @@ const options: LoggerOptions = {
   timestamp: false,
 };
 
-const logger: Logger<LoggerOptions> = pino(options);
-
-export { logger };
+export const logger: Logger<LoggerOptions> = pino(options);

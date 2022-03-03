@@ -2,9 +2,9 @@ import mongoose from 'mongoose';
 import config from 'config';
 import userModel from '../src/models/user.model';
 import { logger } from '../src/utils/logger';
-import { createUser } from '../src/service/user.service';
+import { createUser } from '../src/services/user.service';
 
-const connectDB: () => Promise<void> = async () => {
+export const connectDB: () => Promise<void> = async () => {
   const dbURI: string = config.get<string>('mongoURI');
   try {
     await mongoose.connect(dbURI);
@@ -36,5 +36,3 @@ const connectDB: () => Promise<void> = async () => {
     process.exit(1);
   }
 };
-
-export { connectDB };
